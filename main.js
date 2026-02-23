@@ -178,7 +178,7 @@
     if (gwa === null) {
       badge.className   = 'status-badge';
       badge.textContent = 'No data yet';
-    } else if (gwa == 1.00) {
+    } else if (gwa === 1.00) {
       badge.className   = 'status-badge cdlc';
       badge.textContent = 'Sheesh Boosing PL!';
       icon.classList.add('celebrate');
@@ -189,10 +189,10 @@
       icon.classList.add('celebrate');
       setTimeout(() => icon.classList.remove('celebrate'), 700);
     }
-    else if (gwa >= 1.75) {
+    else if (gwa === 1.75 && gwa > 1.25) {
       badge.className   = 'status-badge close';
       badge.textContent = 'DL! Laban pa! Kunting push nalang next sem';
-    } else if (gwa > 1.75){
+    } else {
       badge.className   = 'status-badge away';
       badge.textContent = 'hala ka meh!';
     }
