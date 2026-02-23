@@ -159,8 +159,8 @@
       gwaEl.textContent = gwa.toFixed(4);
       gwaEl.className   = 'gwa-value ' + gwaColorClass(gwa);
       // Inline hint
-      if      (gwa <= 1.25) scaleEl.textContent = '👑 Crème de la Crème territory';
-      else if (gwa <= 1.75) scaleEl.textContent = "📋 Dean's List territory";
+      if      (gwa <= 1.25) scaleEl.textContent = 'Crème de la Crème ';
+      else if (gwa <= 1.75) scaleEl.textContent = "Dean's List Ngani";
       else if (gwa <= 2.50) scaleEl.textContent = 'Keep pushing — almost there';
       else                  scaleEl.textContent = 'Grades need improvement';
     } else {
@@ -302,15 +302,15 @@
     if (cgpa <= 1.20) {
       cgpaEl.className  = 'cgpa-value summa-color';
       honorEl.className = 'cgpa-honor summa-h';
-      honorEl.textContent = '🥇 Summa Cum Laude — With Highest Honors';
+      honorEl.textContent = 'Summa Cum Laude — With Highest Honors';
     } else if (cgpa <= 1.45) {
       cgpaEl.className  = 'cgpa-value magna-color';
       honorEl.className = 'cgpa-honor magna-h';
-      honorEl.textContent = '🥈 Magna Cum Laude — With High Honors';
+      honorEl.textContent = 'Magna Cum Laude — With High Honors';
     } else if (cgpa <= 1.75) {
       cgpaEl.className  = 'cgpa-value cum-color';
       honorEl.className = 'cgpa-honor cum-h';
-      honorEl.textContent = '🥉 Cum Laude — With Honors';
+      honorEl.textContent = 'Cum Laude — With Honors';
     } else {
       cgpaEl.className  = 'cgpa-value';
       honorEl.className = 'cgpa-honor';
