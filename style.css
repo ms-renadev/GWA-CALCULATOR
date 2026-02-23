@@ -85,7 +85,14 @@
       margin-bottom: 1.25rem;
     }
     .header-pill span { color: var(--hot); font-size: 0.85rem; }
-
+    .cremedelacreme-logo img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%; /* Gawing bilog */
+    object-fit: cover;
+    border: 2px solid #d4af37; /* Gold border */
+    display: block;
+  }
     header h1 {
       font-family: 'Lora', serif;
       font-weight: 600;
