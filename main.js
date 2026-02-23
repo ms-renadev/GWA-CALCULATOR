@@ -183,16 +183,16 @@
       badge.textContent = 'Sheesh Boosing PL!';
       icon.classList.add('celebrate');
       setTimeout(() => icon.classList.remove('celebrate'), 700);
-    } else if (1 < gwa <= 1.25) {
+    } else if (1.25 >= gwa && gwa > 1.00) {
       badge.className   = 'status-badge cdlc';
       badge.textContent = 'Naks! CL! How to be u po';
       icon.classList.add('celebrate');
       setTimeout(() => icon.classList.remove('celebrate'), 700);
     }
-    else if (gwa <= 1.75) {
+    else if (gwa >= 1.75) {
       badge.className   = 'status-badge close';
       badge.textContent = 'DL! Laban pa! Kunting push nalang next sem';
-    } else {
+    } else if (gwa > 1.75){
       badge.className   = 'status-badge away';
       badge.textContent = 'hala ka meh!';
     }
