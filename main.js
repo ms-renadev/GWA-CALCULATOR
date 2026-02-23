@@ -178,21 +178,17 @@
     if (gwa === null) {
       badge.className   = 'status-badge';
       badge.textContent = 'No data yet';
-      icon.textContent  = '🎓';
     } else if (gwa <= 1.25) {
       badge.className   = 'status-badge cdlc';
-      badge.textContent = 'Crème de la Crème 👑';
-      icon.textContent  = '🏆';
+      badge.textContent = 'Crème de la Crème';
       icon.classList.add('celebrate');
       setTimeout(() => icon.classList.remove('celebrate'), 700);
     } else if (gwa <= 1.75) {
       badge.className   = 'status-badge close';
       badge.textContent = 'Good — Not CdlC Yet';
-      icon.textContent  = '📈';
     } else {
       badge.className   = 'status-badge away';
       badge.textContent = 'Keep Pushing';
-      icon.textContent  = '💪';
     }
 
     /* Honor strip — Crème de la Crème (semestral GWA only) */
