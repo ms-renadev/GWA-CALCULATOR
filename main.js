@@ -178,17 +178,23 @@
     if (gwa === null) {
       badge.className   = 'status-badge';
       badge.textContent = 'No data yet';
-    } else if (gwa <= 1.25) {
+    } else if (gwa == 1.00) {
       badge.className   = 'status-badge cdlc';
-      badge.textContent = 'Crème de la Crème';
+      badge.textContent = 'Sheesh Boosing PL!';
       icon.classList.add('celebrate');
       setTimeout(() => icon.classList.remove('celebrate'), 700);
-    } else if (gwa <= 1.75) {
+    } else if (1 < gwa <= 1.25) {
+      badge.className   = 'status-badge cdlc';
+      badge.textContent = 'Naks! CL! How to be u po';
+      icon.classList.add('celebrate');
+      setTimeout(() => icon.classList.remove('celebrate'), 700);
+    }
+    else if (gwa <= 1.75) {
       badge.className   = 'status-badge close';
-      badge.textContent = 'Good — Not CdlC Yet';
+      badge.textContent = 'DL! Laban pa! Kunting push nalang next sem';
     } else {
       badge.className   = 'status-badge away';
-      badge.textContent = 'Keep Pushing';
+      badge.textContent = 'hala ka meh!';
     }
 
     /* Honor strip — Crème de la Crème (semestral GWA only) */
