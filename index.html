@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GWA Calculator — Dean's List & Honors Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="noise"></div>
+<div class="page-wrap">
+
+  <!-- ── HEADER ── -->
+  <header>
+    <div class="header-pill"><span>★</span> GWA / CGPA Calculator</div>
+    <h1>Will You Make the<br/><em>Dean's List?</em></h1>
+    <p>Enter this semester's subjects to check your <strong>GWA</strong> — for Dean's List & Crème de la Crème. Then add your past semester GPAs to track your <strong>CGPA</strong> for Latin Honors.</p>
+  </header>
+
+  <!-- ── RESULT SECTION ── -->
+  <div class="result-section">
+
+    <!-- Main GWA card -->
+    <div class="result-card">
+      <div class="gwa-display">
+        <div class="gwa-label">This Sem GWA</div>
+        <div class="gwa-value" id="gwaValue">—</div>
+        <div style="font-size:0.72rem;color:rgba(255,255,255,0.38);margin-top:0.3rem" id="gwaScale">Add subjects to begin</div>
+      </div>
+      <div class="result-center">
+        <div class="deans-icon" id="deansIcon">🎓</div>
+        <div class="status-badge" id="statusBadge">No data yet</div>
+      </div>
+      <div class="units-display">
+        <div class="gwa-label" style="text-align:right">Total Units</div>
+        <div class="units-big" id="totalUnits">0</div>
+        <div class="units-sub">units this sem</div>
+      </div>
+    </div>
+
+    <!-- Two-column honor status strip -->
+    <div class="honor-strip">
+      <div class="honor-block" id="cdlcBlock">
+        <div class="honor-block-icon">👑</div>
+        <div class="honor-block-body">
+          <div class="honor-block-label">Crème de la Crème</div>
+          <div class="honor-block-basis">Based on Semestral GWA</div>
+          <div class="honor-block-range">Qualify if GWA is <strong>1.00 – 1.25</strong></div>
+          <div class="honor-block-status" id="cdlcStatus">—</div>
+        </div>
+      </div>
+      <div class="honor-divider"></div>
+      <div class="honor-block" id="dlBlock">
+        <div class="honor-block-icon">📋</div>
+        <div class="honor-block-body">
+          <div class="honor-block-label">Dean's List</div>
+          <div class="honor-block-basis">Based on Cumulative CGPA</div>
+          <div class="honor-block-range">Qualify if CGPA is <strong>1.00 – 1.75</strong></div>
+          <div class="honor-block-status" id="dlStatus">—</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="progress-wrap">
+      <div class="progress-header">
+        <span class="progress-label">Semestral GWA — Crème de la Crème progress (≤ 1.25)</span>
+        <span class="progress-pct" id="progressPct">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-markers">
+        <span class="progress-marker">5.00 ✗</span>
+        <span class="progress-marker">3.00</span>
+        <span class="progress-marker">1.75 DL</span>
+        <span class="progress-marker">1.25 CdlC</span>
+        <span class="progress-marker">1.00 ★</span>
+      </div>
+    </div>
+
+    <!-- Formula -->
+    <div class="formula-box">
+      <span class="formula-label">Formula</span>
+      <span class="formula-eq">GWA = <span>Σ (Grade × Units)</span> ÷ <em>Σ Units</em></span>
+    </div>
+
+    <!-- Insight cards -->
+    <div class="insights">
+      <div class="insight-card pink-accent">
+        <div class="insight-label">📌 Best Grade</div>
+        <div class="insight-value" id="bestGrade">—</div>
+        <div class="insight-sub" id="bestSubject">No subjects yet</div>
+      </div>
+      <div class="insight-card orange-accent">
+        <div class="insight-label">⚠️ Needs Work</div>
+        <div class="insight-value" id="worstGrade">—</div>
+        <div class="insight-sub" id="worstSubject">No subjects yet</div>
+      </div>
+      <div class="insight-card mint-accent">
+        <div class="insight-label">🎯 Points from CdlC</div>
+        <div class="insight-value" id="targetNeeded">—</div>
+        <div class="insight-sub" id="targetSub">Need GWA ≤ 1.25</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SUBJECTS TABLE ── -->
+  <div class="subjects-section">
+    <div class="section-title">Your Subjects</div>
+
+    <div class="subjects-table-wrap">
+      <div class="table-header">
+        <div class="th">Subject</div>
+        <div class="th">Units</div>
+        <div class="th">Grade</div>
+        <div class="th"></div>
+      </div>
+      <div class="subject-rows" id="subjectRows"></div>
+    </div>
+
+    <div class="controls">
+      <button class="btn-add" id="addBtn">＋ Add Subject</button>
+      <button class="btn-preset" id="presetBtn">📚 Load Sample Subjects</button>
+      <button class="btn-reset" id="resetBtn">↺ Reset All</button>
+    </div>
+  </div>
+
+  <!-- ── CGPA SECTION ── -->
+  <div class="how-section">
+    <div class="section-title">Cumulative GPA — Latin Honors Tracker</div>
+
+    <!-- MSU Attribution -->
+    <div class="msu-badge">
+      <div class="msu-seal">🏛️</div>
+      <div class="msu-text">
+        <div class="msu-name">Mindanao State University — Main Campus</div>
+        <div class="msu-sub">Marawi City &nbsp;·&nbsp; Grading scale & honors criteria based on official MSU academic standards</div>
+      </div>
+    </div>
+
+    <!-- Latin honors reference card -->
+    <div class="latin-honors-ref">
+      <div class="lh-item summa">
+        <div class="lh-range">1.00 – 1.20</div>
+        <div class="lh-title">Summa Cum Laude</div>
+        <div class="lh-sub">With Highest Honors</div>
+      </div>
+      <div class="lh-item magna">
+        <div class="lh-range">1.21 – 1.45</div>
+        <div class="lh-title">Magna Cum Laude</div>
+        <div class="lh-sub">With High Honors</div>
+      </div>
+      <div class="lh-item cum">
+        <div class="lh-range">1.46 – 1.75</div>
+        <div class="lh-title">Cum Laude</div>
+        <div class="lh-sub">With Honors</div>
+      </div>
+    </div>
+
+    <!-- CGPA entry -->
+    <div class="cgpa-card">
+      <div class="cgpa-left">
+        <div class="section-title" style="margin-bottom:0.5rem">Add Past Semester GPAs</div>
+        <p style="font-size:0.8rem;color:var(--slate-light);margin-bottom:1rem;line-height:1.6">Enter each semester's GPA and unit count to compute your running CGPA. This semester is already included.</p>
+        <div class="sem-rows" id="semRows"></div>
+        <button class="btn-add" id="addSemBtn" style="margin-top:0.85rem;font-size:0.78rem;padding:0.55rem 1.1rem">＋ Add Semester</button>
+      </div>
+      <div class="cgpa-right">
+        <div class="cgpa-result-label">Your CGPA</div>
+        <div class="cgpa-value" id="cgpaValue">—</div>
+        <div class="cgpa-honor" id="cgpaHonor">Add semesters to see your Latin Honors standing</div>
+        <div class="cgpa-breakdown" id="cgpaBreakdown"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>GWA Calculator — Built for MSUan students 🇵🇭 &nbsp;|&nbsp; <strong>Lower grade = Better (1.00 is perfect)</strong></p>
+    <p style="margin-top:0.35rem">Dean's List & CdlC → Semestral GWA &nbsp;·&nbsp; Latin Honors → Cumulative CGPA</p>
+  </footer>
+
+</div>
+</body>
+</html>
